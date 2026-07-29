@@ -50,9 +50,7 @@ export default function RSVP() {
 >
       <div className="w-full max-w-xl mx-auto text-center">
 
-        <p className="uppercase tracking-[0.35em] text-xs text-[#B88752]">
-          Kindly Respond
-        </p>
+        
 
         <h2
           className="text-5xl text-[#7B1D2A] mt-4"
@@ -60,6 +58,12 @@ export default function RSVP() {
         >
           RSVP
         </h2>
+<h3
+className="text-1xl text-[#B88752] mt-2"
+          style={{ fontFamily: "Cormorant Garamond" }}
+        >
+          by August 10, 2026
+        </h3>
 
         {submitted ? (
           <div className="mt-10 border border-[#C89A2A] rounded-lg p-8 bg-white">
@@ -73,7 +77,7 @@ export default function RSVP() {
             <p className="mt-4 text-[#6B4B3E]">
               Your RSVP has been received.
               <br />
-              We can't wait to celebrate with you!
+              We can't wait to celebrate with you! The dress code for our wedding is Indian Ethnic wear!
             </p>
           </div>
         ) : (

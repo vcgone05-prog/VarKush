@@ -43,7 +43,11 @@ export default function LiveLink() {
         >
           COMING SOON
         </button>
-
+<div className="flex items-center justify-center gap-5 mb-10 mt-10">
+          <div className="w-20 h-px bg-[#D8C5A5]" />
+          <span className="text-[#C89A2A] text-lg">✦</span>
+          <div className="w-20 h-px bg-[#D8C5A5]" />
+        </div>
       </div>
     </section>
   );
