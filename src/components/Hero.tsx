@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 
 import toranam from "../assets/images/toranam.png";
 import ganesha from "../assets/images/ganesha.png";
-import couplePhoto from "../assets/images/Photo.jpeg";
+import couplePhoto from "../assets/images/IMG_2228.jpg";
+import banana from "../assets/images/banana.png";
 import { MapPin } from "lucide-react";
 
 export default function Hero() {
@@ -96,21 +97,59 @@ END:VCALENDAR`;
   return (
     <section className="bg-[#FAF4EC] min-h-screen overflow-hidden">
 
-      <div className="flex justify-center pt-6">
+      <div className="flex justify-center pt-0">
         <img
           src={toranam}
           alt=""
-          className="w-[900px] max-w-[95%]"
+          className="w-[900px] max-w-[98%]"
         />
       </div>
 
-      <div className="flex justify-center mt-5">
-        <img
-          src={ganesha}
-          alt=""
-          className="w-16"
-        />
-      </div>
+     <div className="relative mt-8">
+  {/* Left banana */}
+  <img
+    src={banana}
+    alt=""
+    className="
+      absolute
+      left-0
+      top-1/2
+      -translate-y-1/2
+      w-22
+      sm:w-36
+      md:w-44
+      -scale-x-100
+      pointer-events-none
+      select-none
+    "
+  />
+
+  {/* Ganesha */}
+  <div className="flex justify-center">
+    <img
+      src={ganesha}
+      alt=""
+      className="w-16 relative z-10 scale-130 sm:scale-150 md:scale-150"
+    />
+  </div>
+
+  {/* Right banana */}
+  <img
+    src={banana}
+    alt=""
+    className="
+      absolute
+      right-0
+      top-1/2
+      -translate-y-1/2
+      w-22
+      sm:w-36
+      md:w-44
+      pointer-events-none
+      select-none
+    "
+  />
+</div>
      
       <nav className="mt-8 flex justify-center gap-10 uppercase tracking-[0.35em] text-[11px]">
         <a href="#">Home</a>
@@ -150,7 +189,7 @@ END:VCALENDAR`;
     <img
       src={couplePhoto}
       alt="Varshini and Kushwanth"
-      className="w-full h-full object-cover object-top scale-125 -translate-y-14"
+      className="w-full h-full object-cover object-top scale-105 translate-y-1"
     />
   </div>
 </div>
@@ -171,7 +210,7 @@ END:VCALENDAR`;
   </h2>
 
   <p className="mt-4 uppercase tracking-[0.35em] text-sm text-[#B88752]">
-    Muhurtam · 11:45 AM
+    Muhurtham · 11:45 AM
   </p>
 
   <div className="mt-6">
@@ -208,15 +247,26 @@ END:VCALENDAR`;
 </div>
 
 
-        <div className="mt-14 grid grid-cols-4 gap-4 max-w-md mx-auto">
-
+        <div className="
+              mt-10
+              grid
+              grid-cols-4
+              gap-2
+              sm:gap-4
+              max-w-sm
+              sm:max-w-md
+              mx-auto
+              px-2
+              ">
           {countdown.map((item) => (
 
             <div
               key={item.label}
               className="
-              w-28
-              h-28
+              w-full
+              aspect-square
+              sm:w-28
+              sm:h-28
               rounded-xl
               border
               border-[#E4D3B8]
@@ -228,13 +278,13 @@ END:VCALENDAR`;
             >
 
               <div
-                className="text-5xl leading-none text-[#7B1D2A]"
+                className="text-3xl sm:text-5xl leading-none text-[#7B1D2A]"
                 style={{ fontFamily: "Cormorant Garamond" }}
               >
                 {String(item.value).padStart(2, "0")}
               </div>
 
-              <div className="uppercase tracking-[0.25em] text-[11px] mt-2 text-[#9B6A5A]">
+              <div className="uppercase text-[9px] sm:text-[11px] tracking-[0.18em] sm:tracking-[0.25em] mt-2 text-[#9B6A5A]">
                 {item.label}
               </div>
 
