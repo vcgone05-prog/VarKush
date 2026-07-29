@@ -1,0 +1,163 @@
+import { useState } from "react";
+import { supabase } from "../lib/supabase";
+
+export default function RSVP() {
+  const [name, setName] = useState("");
+  const [attending, setAttending] = useState(true);
+  const [partySize, setPartySize] = useState(1);
+  const [message, setMessage] = useState("");
+
+  const [loading, setLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+
+    if (!name.trim()) {
+      alert("Please enter your name.");
+      return;
+    }
+
+    setLoading(true);
+
+    const { error } = await supabase.from("rsvps").insert([
+      {
+        name,
+        attending,
+        party_size: partySize,
+        message,
+      },
+    ]);
+
+    setLoading(false);
+
+    if (error) {
+      alert(error.message);
+      return;
+    }
+
+    setSubmitted(true);
+    setName("");
+    setPartySize(1);
+    setMessage("");
+    setAttending(true);
+  }
+
+  return (
+   <section
+  id="rsvp"
+  className="bg-[#FAF4EC] py-24 px-6 flex justify-center"
+>
+      <div className="w-full max-w-xl mx-auto text-center">
+
+        <p className="uppercase tracking-[0.35em] text-xs text-[#B88752]">
+          Kindly Respond
+        </p>
+
+        <h2
+          className="text-5xl text-[#7B1D2A] mt-4"
+          style={{ fontFamily: "Cormorant Garamond" }}
+        >
+          RSVP
+        </h2>
+
+        {submitted ? (
+          <div className="mt-10 border border-[#C89A2A] rounded-lg p-8 bg-white">
+            <h3
+              className="text-3xl text-[#7B1D2A]"
+              style={{ fontFamily: "Cormorant Garamond" }}
+            >
+              Thank You!
+            </h3>
+
+            <p className="mt-4 text-[#6B4B3E]">
+              Your RSVP has been received.
+              <br />
+              We can't wait to celebrate with you!
+            </p>
+          </div>
+        ) : (
+          <form
+            onSubmit={handleSubmit}
+            className="mt-12 space-y-8 text-left"
+          >
+            <div>
+              <label className="block uppercase tracking-[0.25em] text-xs mb-2">
+                Full Name
+              </label>
+
+              <input
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="w-full border-b border-[#C89A2A] bg-transparent py-3 outline-none"
+                placeholder="Your name"
+              />
+            </div>
+
+            <div>
+              <label className="block uppercase tracking-[0.25em] text-xs mb-3">
+                Will you be attending?
+              </label>
+
+              <div className="flex gap-8">
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="radio"
+                    checked={attending}
+                    onChange={() => setAttending(true)}
+                  />
+                  Yes
+                </label>
+
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="radio"
+                    checked={!attending}
+                    onChange={() => setAttending(false)}
+                  />
+                  No
+                </label>
+              </div>
+            </div>
+
+            <div>
+              <label className="block uppercase tracking-[0.25em] text-xs mb-2">
+                Number of Guests
+              </label>
+
+              <input
+                type="number"
+                min={1}
+                max={10}
+                value={partySize}
+                onChange={(e) => setPartySize(Number(e.target.value))}
+                className="w-full border-b border-[#C89A2A] bg-transparent py-3 outline-none"
+              />
+            </div>
+
+            <div>
+              <label className="block uppercase tracking-[0.25em] text-xs mb-2">
+                Message (Optional)
+              </label>
+
+              <textarea
+                rows={4}
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                className="w-full border border-[#DCC6A4] rounded-md bg-white/40 p-4 outline-none resize-none"
+                placeholder="Leave us a note..."
+              />
+            </div>
+
+            <button
+              disabled={loading}
+              className="w-full bg-[#7B1D2A] text-white py-4 rounded hover:opacity-90 transition"
+            >
+              {loading ? "Sending..." : "SEND RSVP"}
+            </button>
+          </form>
+        )}
+      </div>
+    </section>
+  );
+}
