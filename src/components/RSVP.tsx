@@ -7,8 +7,9 @@ export default function RSVP() {
   const [partySize, setPartySize] = useState(1);
   const [message, setMessage] = useState("");
 
-  const [loading, setLoading] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [submitted, setSubmitted] = useState(false);
+    const [submittedAttending, setSubmittedAttending] = useState(true);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -21,13 +22,13 @@ export default function RSVP() {
     setLoading(true);
 
     const { error } = await supabase.from("rsvps").insert([
-      {
-        name,
-        attending,
-        party_size: partySize,
-        message,
-      },
-    ]);
+  {
+    name,
+    attending,
+    party_size: attending ? partySize : 0,
+    message,
+  },
+]);
 
     setLoading(false);
 
@@ -36,7 +37,9 @@ export default function RSVP() {
       return;
     }
 
+   setSubmittedAttending(attending);
     setSubmitted(true);
+
     setName("");
     setPartySize(1);
     setMessage("");
@@ -74,11 +77,27 @@ className="text-2xl text-[#B88752] mt-2"
               Thank You!
             </h3>
 
-            <p className="mt-4 text-[#6B4B3E]">
+          {submittedAttending ? (
+            <p className="mt-4 text-[#6B4B3E] leading-8">
               Your RSVP has been received.
               <br />
-              We can't wait to celebrate with you! The dress code for our wedding is Indian Ethnic wear!
+              We're so excited to celebrate this special day with you!
+              <br />
+              We can't wait to welcome you to our wedding.
+              <br />
+              <span className="text-xl font-semibold underline decoration-[#C89A2A] underline-offset-4">
+  Dress Code: Indian Ethnic Wear
+</span>
             </p>
+          ) : (
+            <p className="mt-6 text-[#6B4B3E] leading-10">
+              Thank you for letting us know.
+              <br />
+              While we're sad that you won't be able to join us, we completely understand.
+              <br />
+              We'll miss celebrating with you!
+            </p>
+          )}
           </div>
         ) : (
           <form

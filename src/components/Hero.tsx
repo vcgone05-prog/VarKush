@@ -97,7 +97,7 @@ END:VCALENDAR`;
   return (
     <section className=" min-h-screen overflow-hidden">
 
-      <div className="flex justify-center pt-0">
+      <div className="flex justify-center -pt-10">
         <img
           src={toranam}
           alt=""
@@ -105,7 +105,7 @@ END:VCALENDAR`;
         />
       </div>
 
-     <div className="relative mt-8">
+     <div className="relative mt-10">
   {/* Left banana */}
   <img
     src={banana}
