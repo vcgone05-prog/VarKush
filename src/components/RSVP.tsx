@@ -46,7 +46,7 @@ export default function RSVP() {
   return (
    <section
   id="rsvp"
-  className="bg-[#FAF4EC] py-24 px-6 flex justify-center"
+  className="py-24 px-6 flex justify-center"
 >
       <div className="w-full max-w-xl mx-auto text-center">
 
@@ -59,7 +59,7 @@ export default function RSVP() {
           RSVP
         </h2>
 <h3
-className="text-1xl text-[#B88752] mt-2"
+className="text-2xl text-[#B88752] mt-2"
           style={{ fontFamily: "Cormorant Garamond" }}
         >
           by August 10, 2026
@@ -124,20 +124,25 @@ className="text-1xl text-[#B88752] mt-2"
               </div>
             </div>
 
-            <div>
-              <label className="block uppercase tracking-[0.25em] text-xs mb-2">
-                Number of Guests
-              </label>
+            {attending && (
+  <div>
+    <label className="block uppercase tracking-[0.25em] text-xs mb-2">
+      Number of Attendees (including yourself)
+    </label>
 
-              <input
-                type="number"
-                min={1}
-                max={10}
-                value={partySize}
-                onChange={(e) => setPartySize(Number(e.target.value))}
-                className="w-full border-b border-[#C89A2A] bg-transparent py-3 outline-none"
-              />
-            </div>
+    <select
+      value={partySize}
+      onChange={(e) => setPartySize(Number(e.target.value))}
+      className="w-full border-b border-[#C89A2A] bg-transparent py-3 outline-none appearance-none"
+    >
+      {[1, 2, 3, 4, 5, 6].map((num) => (
+        <option key={num} value={num}>
+          {num}
+        </option>
+      ))}
+    </select>
+  </div>
+)}
 
             <div>
               <label className="block uppercase tracking-[0.25em] text-xs mb-2">

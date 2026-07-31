@@ -95,7 +95,7 @@ END:VCALENDAR`;
   URL.revokeObjectURL(url);
 };
   return (
-    <section className="bg-[#FAF4EC] min-h-screen overflow-hidden">
+    <section className=" min-h-screen overflow-hidden">
 
       <div className="flex justify-center pt-0">
         <img
@@ -157,9 +157,9 @@ END:VCALENDAR`;
         <a href="#rsvp">RSVP</a>
       </nav>
 
-      <div className="border-b border-[#E7D8C3] mt-8" />
+      <div className="border-b border-[#C89A2A] mt-8" />
 
-      <div className="max-w-3xl mx-auto text-center px-6 pt-16">
+      <div className="max-w-5xl mx-auto text-center px-8 pt-18">
         <p className="uppercase tracking-[0.4em] text-xs text-[#B88752]">
           Together with their families
         </p>
@@ -209,7 +209,7 @@ END:VCALENDAR`;
     Sunday, August 30, 2026
   </h2>
 
-  <p className="mt-4 uppercase tracking-[0.35em] text-sm text-[#B88752]">
+  <p className="mt-4 uppercase tracking-[0.40em] text-md text-[#B88752]">
     Muhurtham · 11:45 AM
   </p>
 
