@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import toranam from "../assets/images/toranam.png";
+import toranam from "../assets/images/toranam.webp";
 import ganesha from "../assets/images/ganesha.png";
 import couplePhoto from "../assets/images/IMG_2228.jpg";
 import banana from "../assets/images/banana.png";

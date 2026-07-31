@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
 import Admin from "./pages/Dashboard";
-import background from "./assets/images/flower_bg.png";
+import background from "./assets/images/flower_bg.webp";
 
 export default function App() {
   return (
