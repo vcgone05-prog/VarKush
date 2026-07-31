@@ -8,18 +8,15 @@ export default function App() {
   return (
     <div className="relative min-h-screen">
   {/* Background */}
-  <div
-    className="absolute inset-0 -z-10"
-    style={{
-      backgroundImage: `url(${background})`,
-      backgroundSize: "cover",
-      backgroundPosition: "top center",
-      backgroundRepeat: "no-repeat",
-    }}
-  />
+  {/* Background */}
+<img
+  src={background}
+  alt=""
+  className="absolute inset-0 w-full h-full object-cover -z-10 opacity-50"
+/>
 
   {/* White overlay */}
-  <div className="absolute inset-0 bg-white/20 -z-10" />
+  <div className="absolute inset-0 bg-white/10 -z-10" />
 
   {/* Website */}
   <BrowserRouter>
