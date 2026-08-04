@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import toranam from "../assets/images/toranam.webp";
 import ganesha from "../assets/images/ganesha.png";
-import couplePhoto from "../assets/images/IMG_2228.jpg";
+import couplePhoto from "../assets/images/newphoto.jpg";
 import banana from "../assets/images/banana.png";
 import { MapPin } from "lucide-react";
 
@@ -189,7 +189,7 @@ END:VCALENDAR`;
     <img
       src={couplePhoto}
       alt="Varshini and Kushwanth"
-      className="w-full h-full object-cover object-top scale-105 translate-y-1"
+      className="w-full h-full object-cover object-top scale-150 translate-y-[-10px]"
     />
   </div>
 </div>
